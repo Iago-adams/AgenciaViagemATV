@@ -8,7 +8,6 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
 
 class UserForm(FlaskForm):
-    nome = StringField('nome', validators=[DataRequired()])
     email = StringField('E-mail', validators=[DataRequired()])
     senha = PasswordField('Senha', validators=[DataRequired()])
     btnSubmit = SubmitField('Enviar')
@@ -33,12 +32,16 @@ def login():
             login_user(user)
             return redirect(url_for('homepage'))
         else:
-            flash('Login failed. Check your email and password.', 'danger')
+            flash('Não deu o certo, verifique o email e a senha', 'danger')
         
     return render_template('login.html', form=form)
 
 @app.route('/Cadastro')
-def cadastro
+def cadastro():
+    form = UserForm()
+    if form.validate_on_submit():
+        
+    return render_template('cadastro.html', form=form)
 
 @app.route('/Sair')
 def logout():
