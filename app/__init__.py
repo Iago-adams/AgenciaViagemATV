@@ -11,7 +11,7 @@ app.config['SECRET_KEY'] = 'aaa'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login_manager = LoginManager(app)
-login_manager.login_view = 'homepage'
+login_manager.login_view = 'login'
 
 from app.view import homepage
 from app.models import User

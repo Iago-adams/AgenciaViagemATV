@@ -14,7 +14,8 @@ class User(db.Model, UserMixin):
 
 class Cliente(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    cpf = db.Column(db.String)
+    nome = db.Column(db.String)
+    cpf = db.Column(db.String, unique=True)
     reservaCliente = db.relationship('Reserva', backref='cliente', lazy=True)
 
 class Pacote(db.Model):

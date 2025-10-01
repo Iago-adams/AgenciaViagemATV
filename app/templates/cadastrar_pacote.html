@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="" method="post">
+        {{form.csrf_token}}
+
+        {{form.destino.label(class="form-label")}}
+        {{form.destino(class="form-control")}}
+
+        {{form.periodo.label(class="form-label")}}
+        {{form.periodo(class="form-control")}}
+        
+        {{form.categoria.label(class="form-label")}}
+        {{form.categoria(class="form-control")}}
+
+        {{form.preco.label(class="form-label")}}
+        {{form.preco(class="form-control")}}
+
+        {{form.vagas.label(class="form-label")}}
+        {{form.vagas(class="form-control")}}
+
+        {{form.btnSubmit(class="btn btn-dark col-12 mt-3")}}
+    </form>
+{% endblock %}
