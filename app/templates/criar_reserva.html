@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Reservar Pacote: {{ pacote.destino }}</h2>
+    <p><strong>Vagas restantes:</strong> {{ pacote.vagas }}</p>
+
+    <form action="" method="post">
+        {{ form.csrf_token }}
+
+        <div class="mb-3">
+            {{ form.cliente.label(class="form-label") }}
+            {{ form.cliente(class="form-select") }}
+        </div>
+        
+        {{ form.btnSubmit(class="btn btn-success col-12 mt-3") }}
+    </form>
+{% endblock %}

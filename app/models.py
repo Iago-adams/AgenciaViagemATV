@@ -1,5 +1,6 @@
 from app import db, login_manager
 from flask_login import UserMixin
+from datetime import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -33,4 +34,5 @@ class Reserva(db.Model):
     id_cliente = db.Column(db.Integer, db.ForeignKey('cliente.id'))
     id_pacote = db.Column(db.Integer, db.ForeignKey('pacote.id'))
     id_user = db.Column(db.Integer, db.ForeignKey('user.id'))
-    isActivated = db.Column(db.Boolean)
+    data_reserva = db.Column(db.DateTime, default=datetime.utcnow)
+    isActivated = db.Column(db.Boolean, default=True) 

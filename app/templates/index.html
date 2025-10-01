@@ -1,4 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
-    
+    <h2>Pacotes de Viagem Disponíveis</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Destino</th>
+                <th>Período</th>
+                <th>Preço</th>
+                <th>Vagas</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pacote in pacotes %}
+            <tr>
+                <td>{{ pacote.destino }}</td>
+                <td>{{ pacote.periodo }}</td>
+                <td>R$ {{ "%.2f"|format(pacote.preco) }}</td>
+                <td>{{ pacote.vagas }}</td>
+                <td>
+                    {% if pacote.vagas > 0 %}
+                        <a href="{{ url_for('criar_reserva', id_pacote=pacote.id) }}" class="btn btn-success btn-sm">Reservar</a>
+                    {% else %}
+                        <button class="btn btn-danger btn-sm" disabled>Esgotado</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
